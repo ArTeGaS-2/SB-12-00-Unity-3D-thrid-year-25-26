@@ -11,7 +11,7 @@ public class Advanced_Level_Generator : MonoBehaviour
     public float levelHeightStep = 14f; // Крок між поверхами
     public int levelsNumToGenerate = 10; // Кількість рівнів
 
-    public GameObject player;
+    [HideInInspector]public GameObject player;
 
     public List<GameObject> levels = new List<GameObject>();
 
