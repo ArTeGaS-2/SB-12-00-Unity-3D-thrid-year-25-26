@@ -7,6 +7,14 @@ public class AdvLevel : MonoBehaviour
     private Advanced_Level_Generator levelGenerator; // Посилання на генератор
     private GameObject player; // Посилання на об'єкт гравця
     private List<GameObject> levels; // Список сгенерованих рівнів
+
+    public void Start()
+    {
+        levelGenerator = Advanced_Level_Generator.instance;
+        player = Advanced_Level_Generator.instance.player;
+        levels = Advanced_Level_Generator.instance.levels;
+    }
+
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player"))
