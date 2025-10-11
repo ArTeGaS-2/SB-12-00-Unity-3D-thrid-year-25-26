@@ -5,14 +5,17 @@ using UnityEngine;
 public class Advanced_Level_Generator : MonoBehaviour
 {
     public static Advanced_Level_Generator instance;
-
+    [Header("Елементи рівня")]
     public GameObject levelPrefab; // Шаблон рівня
     public int levelNum;
     public float levelHeightStep = 14f; // Крок між поверхами
     public int levelsNumToGenerate = 10; // Кількість рівнів
+    [Header("Інше")]
+    public GameObject shadowObj; // Об'єкт тіні/скрімера
+    public List<GameObjects> = new List<GameObject>(); // Список інакших рівнів
 
-    [HideInInspector]public GameObject player;
-
+    [HideInInspector] public GameObject player;
+    [HideInInspector] public int currentLvlNum;
     public List<GameObject> levels = new List<GameObject>();
 
     private void Start()
