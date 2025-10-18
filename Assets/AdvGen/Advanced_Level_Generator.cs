@@ -30,9 +30,20 @@ public class Advanced_Level_Generator : MonoBehaviour
         {
             levelNum--;
 
+            GameObject level = null;
+
+            
             if (levels.Count > 35 && genRandomLevels)
             {
-                GameObject level = Instantiate(anotherLevels[
+                level = Instantiate(anotherLevels[
+                    Random.Range(0, anotherLevels.Count)],
+                    new Vector3(0, 7, 0) + new Vector3(
+                    0, levelNum * levelHeightStep, 0),
+                    Quaternion.identity);
+            }
+            else if (levelNum == -2)
+            {
+                level = Instantiate(anotherLevels[
                     Random.Range(0, anotherLevels.Count)],
                     new Vector3(0, 7, 0) + new Vector3(
                     0, levelNum * levelHeightStep, 0),
@@ -40,7 +51,7 @@ public class Advanced_Level_Generator : MonoBehaviour
             }
             else
             {
-                GameObject level = Instantiate(levelPrefab,
+                level = Instantiate(levelPrefab,
                     new Vector3(0, 7, 0) + new Vector3(
                     0, levelNum * levelHeightStep, 0),
                     Quaternion.identity);

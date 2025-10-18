@@ -700,7 +700,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 1
-  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
+  m_BackGroundColor: {r: 0, g: 0, b: 0, a: 1}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
@@ -2305,8 +2305,14 @@ MonoBehaviour:
   levelNum: 0
   levelHeightStep: 14
   levelsNumToGenerate: 500
+  shadowObj: {fileID: 8234159770341748979, guid: f02727a4fe49da3468dd6b13055a4a0d,
+    type: 3}
+  anotherLevels:
+  - {fileID: 6317067894420601221, guid: 9d7fec2b974d545489f841ba00d9774e, type: 3}
   player: {fileID: 0}
+  currentLvlNum: 0
   levels: []
+  genRandomLevels: 1
 --- !u!1 &1107591511
 GameObject:
   m_ObjectHideFlags: 0
