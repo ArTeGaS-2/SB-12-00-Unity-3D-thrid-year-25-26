@@ -2275,7 +2275,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1049354661}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a6e6c21b9cc60494180439709232be17, type: 3}
   m_Name: 
@@ -2295,7 +2295,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1049354661}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8277a4e4d3cb08d46ad4994e86308cf7, type: 3}
   m_Name: 
@@ -2305,14 +2305,15 @@ MonoBehaviour:
   levelNum: 0
   levelHeightStep: 14
   levelsNumToGenerate: 500
+  levels: []
   shadowObj: {fileID: 8234159770341748979, guid: f02727a4fe49da3468dd6b13055a4a0d,
     type: 3}
   anotherLevels:
   - {fileID: 6317067894420601221, guid: 9d7fec2b974d545489f841ba00d9774e, type: 3}
+  firstAnotherLevelIndex: 35
+  genRandomLevels: 1
   player: {fileID: 0}
   currentLvlNum: 0
-  levels: []
-  genRandomLevels: 1
 --- !u!1 &1107591511
 GameObject:
   m_ObjectHideFlags: 0
