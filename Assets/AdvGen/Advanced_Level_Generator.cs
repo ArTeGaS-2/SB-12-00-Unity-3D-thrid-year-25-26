@@ -10,30 +10,46 @@ public class Advanced_Level_Generator : MonoBehaviour
     public int levelNum;
     public float levelHeightStep = 14f; // Крок між поверхами
     public int levelsNumToGenerate = 10; // Кількість рівнів
+    public List<GameObject> levels = new List<GameObject>();
     [Header("Інше")]
     public GameObject shadowObj; // Об'єкт тіні/скрімера
+    [Header("Рандомні рівні")]
     public List<GameObject> anotherLevels
         = new List<GameObject>(); // Список інакших рівнів
+    public int firstAnotherLevelIndex = 35; // поріг інакших рівнів
+    private List<int> anotherLevelIndexes
+        = new List<int>(); // Список індексів випадкових рівнів
+    public bool genRandomLevels = true;
 
     [HideInInspector] public GameObject player;
     [HideInInspector] public int currentLvlNum;
-    public List<GameObject> levels = new List<GameObject>();
-    public bool genRandomLevels = true;
-
     private void Start()
     {
         instance = this;
 
         player = GameObject.FindWithTag("Player");
 
+        for (int i = 1; i < anotherLevels.Count; i++)
+        {
+            int randomLevelIndex = Random.Range(36, levelsNumToGenerate);
+            foreach (int j in anotherLevelIndexes)
+            {
+                if (j == randomLevelIndex)
+                {
+                    randomLevelIndex =
+                        Random.Range(36, levelsNumToGenerate);
+                    
+                }
+                anotherLevelIndexes.Add(randomLevelIndex);
+            }
+        }
+
         for (int i = 0; i < levelsNumToGenerate + 1; i++)
         {
             levelNum--;
-
             GameObject level = null;
 
-            
-            if (levels.Count > 35 && genRandomLevels)
+            if (anotherLevelIndexes[0] == i && genRandomLevels)
             {
                 level = Instantiate(anotherLevels[
                     Random.Range(0, anotherLevels.Count)],
