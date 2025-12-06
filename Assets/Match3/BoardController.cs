@@ -12,6 +12,16 @@ public class BoardController : MonoBehaviour
     [Header("Геми")]
     public List<GameObject> gemPrefabs; // префаби гемів
 
+    [Header("Анімації")]
+    [SerializeField] float destroyDelay = 0.25f;
+    [SerializeField] float afterCollapseDelay = 0.1f;
+
+    [Header("Рахунок")]
+    [SerializeField] ScoreManager scoreManager;
+
+    public int Width => width;
+    public int Lenght => lenght;
+
     public GameObject[,] Grid;
     public bool IsBusy { get; private set; }
 
@@ -21,15 +31,17 @@ public class BoardController : MonoBehaviour
     }
     private void Start()
     {
+        if (scoreManager != null) scoreManager.ResetScore();
+
         for (int y = 0; y < lenght; y++)
         {
             for (int x = 0; x < width; x++)
             {
-                SpawnGem(x,y);
+                SpawnGem(x,y, playSpawn: true);
             }
         }
     }
-    private GameObject SpawnGem(int x, int y)
+    private GameObject SpawnGem(int x, int y, bool playSpawn = true)
     {
         int type = Random.Range(0, gemPrefabs.Count);
         Vector3 position = new Vector3(
@@ -45,6 +57,9 @@ public class BoardController : MonoBehaviour
         gem.X = x;
         gem.Y = y;
         gem.Type = type;
+
+        GemVisual visual = obj.GetComponent<GemVisual>();
+        if (visual != null && playSpawn) visual.PlaySpawn();
 
         Grid[x, y] = obj;
         return obj;
@@ -70,8 +85,23 @@ public class BoardController : MonoBehaviour
         IsBusy = true;
 
         SwapGems(a, b);
-
         yield return null;
+
+        // перший пошук метчів
+        var matches = MatchFinder.FindMatches(Grid, width, lenght);
+        if (matches.Count == 0)
+        {
+            SwapGems(a, b);
+            IsBusy = false;
+            yield break;
+        }
+        do
+        {
+            yield return StartCoroutine(
+                AnimateMatchesAndCollapse(matches));
+            matches = MatchFinder.FindMatches(Grid, width, lenght);
+        }
+        while (matches.Count > 0);
 
         IsBusy = false;
     }

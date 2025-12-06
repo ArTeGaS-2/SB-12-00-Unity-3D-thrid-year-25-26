@@ -26,7 +26,7 @@ public class MatchFinder : MonoBehaviour
                     {
                         // додаємо всі позиції серії в результат
                         for (int k = 1; k <= streak; k++)
-                            result.Add(new Vector2Int(x - k, y))
+                            result.Add(new Vector2Int(x - k, y));
                     }
                     streak = 1;
                 }
