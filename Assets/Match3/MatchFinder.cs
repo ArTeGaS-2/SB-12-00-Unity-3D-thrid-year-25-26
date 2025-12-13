@@ -1,19 +1,18 @@
-using System.Collections;
+// MatchFinder.cs
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MatchFinder : MonoBehaviour
+public static class MatchFinder
 {
-    public static HashSet<Vector2Int> FindMatches(
-        GameObject[,] grid, int width, int height)
+    // Повертає всі позиції гемів, які входять у матчі 3+ по горизонталі/вертикалі
+    public static HashSet<Vector2Int> FindMatches(GameObject[,] grid, int width, int height)
     {
         var result = new HashSet<Vector2Int>();
 
-        // Горизонтальні метчі
+        // Горизонтальні матчі
         for (int y = 0; y < height; y++)
         {
-            int streak = 1; // довжина поточної серії однакових гемів
-
+            int streak = 1;
             for (int x = 1; x < width; x++)
             {
                 if (SameType(grid[x, y], grid[x - 1, y]))
@@ -24,25 +23,24 @@ public class MatchFinder : MonoBehaviour
                 {
                     if (streak >= 3)
                     {
-                        // додаємо всі позиції серії в результат
                         for (int k = 1; k <= streak; k++)
                             result.Add(new Vector2Int(x - k, y));
                     }
                     streak = 1;
                 }
             }
-            // кінець ряду: якщо серія закінчилась на правому краю
+
             if (streak >= 3)
             {
                 for (int k = 0; k < streak; k++)
                     result.Add(new Vector2Int(width - 1 - k, y));
             }
         }
-        // Вертикальні метчі
+
+        // Вертикальні матчі
         for (int x = 0; x < width; x++)
         {
             int streak = 1;
-
             for (int y = 1; y < height; y++)
             {
                 if (SameType(grid[x, y], grid[x, y - 1]))
@@ -59,27 +57,23 @@ public class MatchFinder : MonoBehaviour
                     streak = 1;
                 }
             }
-            // кінець колонки
+
             if (streak >= 3)
             {
-                if (streak >= 3)
-                {
-                    for (int k = 1; k <= streak; k++)
-                        result.Add(new Vector2Int(x, height - 1 - k));
-                }
+                for (int k = 0; k < streak; k++)
+                    result.Add(new Vector2Int(x, height - 1 - k));
             }
         }
+
         return result;
     }
-    private static bool SameType(GameObject a, GameObject b)
+
+    static bool SameType(GameObject a, GameObject b)
     {
         if (a == null || b == null) return false;
-
         var ga = a.GetComponent<Gem>();
         var gb = b.GetComponent<Gem>();
-
         if (ga == null || gb == null) return false;
-
         return ga.Type == gb.Type;
     }
 }

@@ -1,5 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
+// PlayerInput.cs
 using UnityEngine;
 
 public class PlayerInput : MonoBehaviour
@@ -12,27 +11,34 @@ public class PlayerInput : MonoBehaviour
     {
         Gem.Clicked += OnGemClicked;
     }
+
     private void OnDisable()
     {
         Gem.Clicked -= OnGemClicked;
     }
+
     void OnGemClicked(Gem gem)
     {
-        if (board == null) return;
+        if (board == null || board.IsBusy)
+            return;
 
         if (firstSelection == null)
         {
             firstSelection = gem;
-            Debug.Log($"First selected: ({gem.X}, {gem.Y})");
         }
         else if (firstSelection == gem)
         {
-            Debug.Log("Selection canceled");
+            // другий кл≥к по тому ж Ц скасовуЇмо виб≥р
             firstSelection = null;
         }
         else
         {
-            Debug.Log($"First selected: ({gem.X}, {gem.Y})");
+            // перев≥р€Їмо, чи сус≥ди
+            int dist = Mathf.Abs(firstSelection.X - gem.X) + Mathf.Abs(firstSelection.Y - gem.Y);
+            if (dist == 1)
+            {
+                StartCoroutine(board.ResolveSwap(firstSelection, gem));
+            }
             firstSelection = null;
         }
     }
