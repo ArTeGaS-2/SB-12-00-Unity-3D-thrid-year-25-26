@@ -9,6 +9,7 @@ public class PoolsLevelGen : MonoBehaviour
 
     [Header("Посилання")]
     public GameObject levelPrefab; // Префаб одного рівня
+    public List<GameObject> anotherLevelsPrefabs; // Список інших рівнів
 
     [Header("Налаштування")]
     public float levelHeightStep = 14f; // Висота між платформами
@@ -34,6 +35,7 @@ public class PoolsLevelGen : MonoBehaviour
     }
     private void Start()
     {
+        anotherLevelsPrefabs = new List<GameObject>();
         basePosition = new Vector3(0,7,0);
 
         BuildPool();
@@ -51,7 +53,29 @@ public class PoolsLevelGen : MonoBehaviour
     {
         for (int i = 0; i < poolCapacity; i++)
         {
-            var go = Instantiate(levelPrefab, transform); // Створює об'єкт
+            var go = new GameObject();
+            List<int> anotherIndex = new List<int>();
+
+            for (int j = 0; j < anotherLevelsPrefabs.Count; j++)
+            {
+                int randLevelIndex = Random.Range(
+                    0, poolCapacity - 1);
+                anotherIndex.Add(randLevelIndex);
+            }
+            foreach (int index in anotherIndex)
+            {
+                if (anotherLevelsPrefabs.Count > 0 &&
+                    i == index)
+                {
+                    int randLevelIndex = Random.Range(
+                        0, anotherLevelsPrefabs.Count);
+                    go = Instantiate(levelPrefab, transform);
+                }
+                else
+                {
+                    go = Instantiate(levelPrefab, transform); // Створює об'єкт
+                }
+            }
             go.SetActive(false); // Відключає об'єкт
             pool.Add(go); // Додає до списку
             free.Push(go); // Додає до стеку(в кінець)
