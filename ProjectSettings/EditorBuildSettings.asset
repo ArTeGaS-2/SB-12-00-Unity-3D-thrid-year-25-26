@@ -8,4 +8,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/SampleScene.unity
     guid: 99c9720ab356a0642a771bea13969a05
+  - enabled: 1
+    path: Assets/AnotherProject/Scenes/EndlessMadness_game.unity
+    guid: 5f3206d01330b5145ba87ad6423b6b96
+  - enabled: 1
+    path: Assets/AnotherProject/Scenes/EndlessMadness_menu.unity
+    guid: a0c58bae7dd732b42a9d9c8c943a022c
   m_configObjects: {}
