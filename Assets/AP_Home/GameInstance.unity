@@ -46430,7 +46430,7 @@ MonoBehaviour:
   sprintSpeed: 9
   rotationSpeed: 12
   groundedGraceTime: 0.12
-  jumpHeight: 1.2
+  jumpHeight: 1.4
   gravity: -18
   crouchSpeed: 2.5
   crouchHeight: 0.8
