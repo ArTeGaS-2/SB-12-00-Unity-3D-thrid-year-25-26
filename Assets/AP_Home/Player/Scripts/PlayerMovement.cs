@@ -12,7 +12,9 @@ public sealed class PlayerMovement : MonoBehaviour
     [Header("Movement")]
     [SerializeField] private float walkSpeed = 4.5f;
     [SerializeField] private float sprintSpeed = 7.5f;
+    [SerializeField] private float aimMoveSpeed = 3.8f;
     [SerializeField] private float rotationSpeed = 12f;
+    [SerializeField] private float aimRotationSpeed = 18f;
     [SerializeField] private float groundedGraceTime = 0.12f;
 
     [Header("Jumping")]
@@ -24,6 +26,7 @@ public sealed class PlayerMovement : MonoBehaviour
     [SerializeField] private float crouchHeight = 1.1f;
 
     public GameObject mainCamera;
+    public bool IsAiming { get; private set; }
 
     private CharacterController controller;
     private Transform cameraTransform;
@@ -63,6 +66,7 @@ public sealed class PlayerMovement : MonoBehaviour
         }
 
         HandleCrouch();
+        IsAiming = Cursor.lockState == CursorLockMode.Locked && Input.GetMouseButton(1);
         var move = GetMoveVector();
         ApplyGravityAndJump();
         controller.Move((move + Vector3.up * verticalVelocity) * Time.deltaTime);
@@ -90,16 +94,30 @@ public sealed class PlayerMovement : MonoBehaviour
         }
 
         var targetSpeed = walkSpeed;
-        if (!isCrouched && Input.GetKey(sprintKey))
-        {
-            targetSpeed = sprintSpeed;
-        }
-        else if (isCrouched)
+        if (isCrouched)
         {
             targetSpeed = crouchSpeed;
         }
+        else if (IsAiming)
+        {
+            targetSpeed = aimMoveSpeed;
+        }
+        else if (Input.GetKey(sprintKey))
+        {
+            targetSpeed = sprintSpeed;
+        }
 
-        if (move.sqrMagnitude > 0.001f)
+        if (IsAiming && cameraTransform != null)
+        {
+            var lookDirection = cameraTransform.forward;
+            lookDirection.y = 0f;
+            if (lookDirection.sqrMagnitude > 0.001f)
+            {
+                var targetRotation = Quaternion.LookRotation(lookDirection.normalized, Vector3.up);
+                transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, aimRotationSpeed * Time.deltaTime);
+            }
+        }
+        else if (move.sqrMagnitude > 0.001f)
         {
             var targetRotation = Quaternion.LookRotation(move, Vector3.up);
             transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, rotationSpeed * Time.deltaTime);
