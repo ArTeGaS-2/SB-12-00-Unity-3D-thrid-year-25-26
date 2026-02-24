@@ -30728,7 +30728,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyReturnToMenuOnPlayerContact
   playerTag: Player
-  menuSceneName: MainMenu
+  menuSceneName: GameInstance
 --- !u!114 &1330976949
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -36843,7 +36843,7 @@ Transform:
   m_GameObject: {fileID: 1635526238}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.38, y: 0.95, z: 0.62}
+  m_LocalPosition: {x: 0.38, y: 0.209, z: 0.62}
   m_LocalScale: {x: 0.16, y: 0.16, z: 0.75}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -46851,22 +46851,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   targetCamera: {fileID: 0}
-  muzzleTransform: {fileID: 0}
+  muzzleTransform: {fileID: 1645964222}
   muzzleChildName: WeaponRect/WeaponMuzzle
   projectilePrefab: {fileID: 1049625127691253674, guid: d43930213ab3da94ebe3965cf2dd93b8,
     type: 3}
-  projectileSpeed: 70
-  projectileLifetime: 2.6
-  muzzleFlashPrefab: {fileID: 3618976938112860419, guid: 453c5abf0d2f5ff4c91636b839d4fd87,
-    type: 3}
-  requireAimForShooting: 1
-  fireRate: 8
-  maxDistance: 140
-  hitMask:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  enemyTag: Enemy
-  drawDebugShot: 0
 --- !u!1 &2058928370
 GameObject:
   m_ObjectHideFlags: 0
