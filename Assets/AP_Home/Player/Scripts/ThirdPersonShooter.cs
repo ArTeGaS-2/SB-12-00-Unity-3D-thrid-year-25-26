@@ -5,6 +5,8 @@ using System;
 [RequireComponent(typeof(PlayerMovement))]
 public sealed class ThirdPersonShooter : MonoBehaviour
 {
+    public static ThirdPersonShooter Instance;
+
     [SerializeField] private UnityEngine.Camera targetCamera;
     [SerializeField] private Transform muzzleTransform;
     [SerializeField] private string muzzleChildName = "WeaponRect/WeaponMuzzle";
@@ -14,6 +16,8 @@ public sealed class ThirdPersonShooter : MonoBehaviour
 
     private void Awake()
     {
+        Instance = this;
+
         playerMovement = GetComponent<PlayerMovement>();
         targetCamera = ResolveCamera();
         muzzleTransform = ResolveMuzzleTransform();
