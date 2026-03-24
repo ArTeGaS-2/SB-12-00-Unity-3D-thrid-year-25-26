@@ -6725,6 +6725,7 @@ GameObject:
   m_Component:
   - component: {fileID: 274519180}
   - component: {fileID: 274519181}
+  - component: {fileID: 274519182}
   m_Layer: 0
   m_Name: HpBar
   m_TagString: Untagged
@@ -6804,6 +6805,22 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &274519182
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 274519179}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fea9a3b0a9ce9644dbcc0adf15ca7986, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hpBarObj: {fileID: 274519179}
+  max_hp: 100
+  min_hp: 0
+  targetObj: {fileID: 1036682237}
 --- !u!1 &276075339
 GameObject:
   m_ObjectHideFlags: 0
@@ -22794,7 +22811,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a13960981bed0b5469183f6f8985d87d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hpBarObj: {fileID: 0}
+  hpBarObj: {fileID: 274519181}
   damage: 20
 --- !u!65 &1036682239
 BoxCollider:
@@ -22811,7 +22828,7 @@ BoxCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
@@ -25119,27 +25136,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 92ad7dd60d3518f4d9219a163ba824ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::RuinsGenerator
-  areaSize: {x: 120, y: 120}
-  edgeMargin: 6
-  seed: 12345
-  clearBeforeGenerate: 1
-  wallSegments: 35
-  rubbleClusters: 55
-  columns: 12
-  wallThickness: 0.8
-  wallMinLength: 4
-  wallMaxLength: 18
-  wallMinHeight: 0.8
-  wallMaxHeight: 3.4
-  rubbleMinPieces: 3
-  rubbleMaxPieces: 8
-  rubbleMinSize: 0.6
-  rubbleMaxSize: 3.8
-  rubbleMaxStackHeight: 2.2
-  columnRadius: 0.8
-  columnMinHeight: 2.2
-  columnMaxHeight: 5.5
-  fallenColumnChance: 0.35
 --- !u!4 &1117349986
 Transform:
   m_ObjectHideFlags: 0
@@ -31243,7 +31239,7 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 0.5
-  m_Speed: 3.5
+  m_Speed: 0
   m_Acceleration: 8
   avoidancePriority: 50
   m_AngularSpeed: 120
