@@ -25136,6 +25136,27 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 92ad7dd60d3518f4d9219a163ba824ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::RuinsGenerator
+  areaSize: {x: 120, y: 120}
+  edgeMargin: 6
+  seed: 12345
+  clearBeforeGenerate: 1
+  wallSegments: 35
+  rubbleClusters: 55
+  columns: 12
+  wallThickness: 0.8
+  wallMinLength: 4
+  wallMaxLength: 18
+  wallMinHeight: 0.8
+  wallMaxHeight: 3.4
+  rubbleMinPieces: 3
+  rubbleMaxPieces: 8
+  rubbleMinSize: 0.6
+  rubbleMaxSize: 3.8
+  rubbleMaxStackHeight: 2.2
+  columnRadius: 0.8
+  columnMinHeight: 2.2
+  columnMaxHeight: 5.5
+  fallenColumnChance: 0.35
 --- !u!4 &1117349986
 Transform:
   m_ObjectHideFlags: 0
