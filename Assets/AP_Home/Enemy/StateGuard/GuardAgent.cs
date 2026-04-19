@@ -72,7 +72,7 @@ public class GuardAgent : MonoBehaviour
         if (points.Length == 0) return;
         pointIndex++;
         if (pointIndex >= points.Length) pointIndex = 0;
-    }
+    } 
     public void SetRandomIdlePoint()
     {
         Vector2 randomPos = Random.insideUnitCircle * idleRadius;

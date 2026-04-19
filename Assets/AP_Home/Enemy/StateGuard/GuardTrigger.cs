@@ -4,15 +4,19 @@ using UnityEngine;
 
 public class GuardTrigger : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    [SerializeField] private GuardAgent guard;
+    private void OnTriggerEnter(Collider other)
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
+        if (other.CompareTag("Player"))
+        {
+            guard.playerInTrigger = true;
+        }
+    } 
+    private void OnTriggerExit(Collider other)
     {
-        
+        if (other.CompareTag("Player"))
+        {
+            guard.playerInTrigger = false;
+        }
     }
 }
