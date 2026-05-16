@@ -25262,9 +25262,30 @@ MonoBehaviour:
   m_GameObject: {fileID: 1117349984}
   m_Enabled: 0
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 92ad7dd60d3518f4d9219a163ba824ad, type: 3}
+  m_Script: {fileID: 11500000, guid: 5aa16cd978b04864e957e67335481fe3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::RuinsGenerator
+  areaSize: {x: 120, y: 120}
+  edgeMargin: 6
+  seed: 12345
+  clearBeforeGenerate: 1
+  wallSegments: 35
+  rubbleClusters: 55
+  columns: 12
+  wallThickness: 0.8
+  wallMinLength: 4
+  wallMaxLength: 18
+  wallMinHeight: 0.8
+  wallMaxHeight: 3.4
+  rubbleMinPieces: 3
+  rubbleMaxPieces: 8
+  rubbleMinSize: 0.6
+  rubbleMaxSize: 3.8
+  rubbleMaxStackHeight: 2.2
+  columnRadius: 0.8
+  columnMinHeight: 2.2
+  columnMaxHeight: 5.5
+  fallenColumnChance: 0.35
 --- !u!4 &1117349986
 Transform:
   m_ObjectHideFlags: 0
@@ -33390,6 +33411,37 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1448320843}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &1452291745
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1452291746}
+  m_Layer: 0
+  m_Name: "\u0422\u043E\u0447\u043A\u0430 \u0434\u043B\u044F \u043A\u043E\u043C\u0456\u0442\u0443"
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1452291746
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1452291745}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -8.203607, y: 4.5181217, z: 3.5239778}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1456404786
 GameObject:
   m_ObjectHideFlags: 0
@@ -49361,3 +49413,4 @@ SceneRoots:
   - {fileID: 1242736968}
   - {fileID: 323570267}
   - {fileID: 423002464}
+  - {fileID: 1452291746}
